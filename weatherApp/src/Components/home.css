@@ -1,0 +1,25 @@
+.homeContainer  {
+    display: flex;
+}
+
+.homeFlex   {
+    flex-grow: 2;
+}
+
+html    {
+    background-color: black;
+}
+
+.heroImage  {
+    background-image: url(./images/HeroImage.jpg), linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5));
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.indent {
+    text-indent: 45px;
+    font-size: 34px;
+    margin-left: 25%;
+    margin-right: 25%;
+    border-radius: 10%;
+}

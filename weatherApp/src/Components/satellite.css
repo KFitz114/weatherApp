@@ -1,0 +1,53 @@
+.satellite {
+    background-image: url(./images/iss.jfif);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    margin-right: 100vw;
+}
+/* p {
+    color: white;
+    font-size: 40px;
+    font-weight: 400;
+    padding-bottom: 30px;
+    background: rgb(43, 42, 42);
+    opacity: .55;
+    border-radius: 25%;
+} */
+td  {
+    flex-direction: column;
+    flex-grow: 2;
+    text-align: center;
+    background-color: gray;
+    padding: 6px;
+    opacity: .65;
+    border: solid white 1px;
+    border-radius: 15%;
+}
+th {
+    flex-direction: column;
+    flex-grow: 2;
+    text-align: center;
+    text-decoration: underline ;
+    color: white;
+    background-color: blue ;
+    padding: 10px;
+    opacity: .65;
+    border: solid gray 1px ;
+    border-radius: 15%;
+
+}
+#tableIss {
+    flex-grow: 2;
+}
+#flex {
+    display: flex;
+}
+
+.satPara    {
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+}

@@ -1,0 +1,59 @@
+.forecast {
+    background-image: url('https://source.unsplash.com/1600x900/?landscape');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-decoration: underline;
+    font-size: 50px;
+    border-radius: 15%;
+    flex-wrap: wrap;
+    margin: 100px;
+}
+
+.results    {
+    justify-content: center;
+    border: solid black 3px;
+    border-radius: 15%;
+    background-color: #000000d0;
+    color: white;
+}
+
+.flex   {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.temp   {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 40px;
+    border-radius: 15%;
+}
+
+.additionalWeather   {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 20px;
+    border-radius: 15%;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.formStyle  {
+    margin-bottom: 20px;
+    border-radius: 15%;
+}
