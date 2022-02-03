@@ -9,7 +9,7 @@ function Forecast() {;
     const uriEncodedZip = encodeURIComponent(zip);
     useState (() => {
         // handleClick();
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=a8cfaf78d2ccf99d02f195059cc8f62d`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
         .then(res => {
             console.log("RES: ", res.data);
             setForecast(res.data);
