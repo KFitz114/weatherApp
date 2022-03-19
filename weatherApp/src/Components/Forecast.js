@@ -3,55 +3,60 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './forecast.css';
 
-function Forecast() {;
-    const[forecast, setForecast] = useState ([]);
-    const [zip, setState]  = useState('20001');
-    const uriEncodedZip = encodeURIComponent(zip);
-    useState (() => {
-        // handleClick();
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`)
-        .then(res => {
-            console.log("RES: ", res.data);
-            setForecast(res.data);
-        })
-    }, [zip])
-    console.log('Forecast ', forecast);
-    let rows = [];
-    console.log("FORECAST>LENGTH: ", forecast.length);
-    if(typeof forecast.weather !='undefined') {
-        console.log("IN IF");
-        rows = forecast.weather.map(el => {
-            console.log("el.main", el.main);
+function Forecast() {
+    const[weather, setWeather] = useState ({})
+    const [zip, setZip]  = useState('')
+
+    const url = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=a8cfaf78d2ccf99d02f195059cc8f62d`
+
+    const searchZip = (event) => {
+        if (event.key === 'Enter') {
+        axios.get(url).then((response) => {
+            setWeather(response.data)
+            console.log(response.data)
+        }) 
+        setZip('')
+        }
+    }   
             return(
-                    <div className ="results">
-                        <h1 className='welcome'> {forecast.name} </h1>  
-                        <p className = 'temp'> {forecast.main.temp} F </p>
-                        <div className = 'additionalWeather'> 
-                            <p>Currently: {el.main} </p>
-                            <p> Humidty: {forecast.main.humidity}% </p>
-                            <p> Wind Speed: {forecast.wind.speed} mph </p>
+                    <div className ="forecast">
+                        <div className="flex-container">
+                            <div className="container">
+                                <div className="search">
+                                    <input
+                                    value={zip}
+                                    onChange={event => setZip(event.target.value)}
+                                    onKeyPress={searchZip}
+                                    placeholder="Enter zipcode"
+                                    type="text" />
+                                </div>
+                                <div className="results">
+                                    <h1 className='location'> {weather.name} </h1>  
+                                    <div className = 'temp'> 
+                                        {weather.main ?
+                                    <p> {weather.main.temp.toFixed()} F </p> : null}
+                                    </div>
+                                    <div className="flex-additional-weather">
+                                        <div className='additionalWeather'>
+                                            {weather.main ? <p> Humidity: {weather.main.humidity}% </p> : null}
+                                        </div>
+                                        <div className="additionalWeather">
+                                            {weather.main ? <p> High: {weather.main.temp_max.toFixed()} F </p> : null}
+                                        </div>
+                                        <div className="additionalWeather">
+                                        {weather.main ? <p> High: {weather.main.temp_min.toFixed()} F </p> : null}
+                                        </div>
+                                        {/* <div className = 'additionalWeather'> 
+                                            <p> Currently: {data.main} </p>
+                                            <p> Humidty: {data.main.humidity}% </p>
+                                            <p> Wind Speed: {data.wind.speed} mph </p>
+                                        </div> */}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-            )        
-        })
-    if (typeof forecast.weather == 'undefined'){
-        return false;
-    }
-    }
-    console.log("Rows:", rows);
-console.log('Forecast: ', forecast);
-    return(
-        <div className='forecast'>
-            {/* <form className = "formStyle">
-                <input type="text" placeholder="Enter Zipcode" value={this.state.value} maxLength="10" onSubmit={this.changeZip}/>
-                <input type="text"  onChange={this.handleChange} />
-                <input type = "button" value = "Alert the text input" onClick={this.handleClick}/>
-            </form> */}
-            <div className='flex'>
-                {rows}
-            </div>   
-        </div>
-    )
+            )    
 }
 
 export default Forecast;
